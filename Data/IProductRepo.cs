@@ -9,7 +9,7 @@ namespace EstoqueWebAPI.Data
     interface IProductRepo
     {
         IEnumerable<Product> getAllProducts();
-        Product GetProductById();
+        Product getProductById();
         void createProduct();
         void updateProduct();
         void deleteProduct();
