@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 
 namespace EstoqueWebAPI
 {
@@ -31,7 +32,8 @@ namespace EstoqueWebAPI
 
             services.AddControllers();
 
-            //services.AddScoped<IEstoqueRepo, MockEstoqueRepo>();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             services.AddScoped<IEstoqueRepo, SqlEstoqueRepo>();
         }
 
