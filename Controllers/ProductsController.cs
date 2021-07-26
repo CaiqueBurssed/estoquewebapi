@@ -33,7 +33,7 @@ namespace EstoqueWebAPI.Controllers
         }
 
         //GET api/products/{id}
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "getProductById")]
         public ActionResult<ProductReadDto> getProductById(int id)
         {
             var productItem = _repository.getProductById(id);
@@ -45,6 +45,19 @@ namespace EstoqueWebAPI.Controllers
 
         }
 
+        //POST api/products
+        [HttpPost]
+        public ActionResult<ProductReadDto> createProduct(ProductCreateDto productCreateDto)
+        {
+            var productModel = _mapper.Map<Product>(productCreateDto);
+            _repository.createProduct(productModel);
+            _repository.SaveChanges();
+
+            var productReadDto = _mapper.Map<ProductReadDto>(productModel);
+
+            return CreatedAtRoute(nameof(getProductById), new { Id = productReadDto.Id }, productReadDto);
+
+        }
 
     }
 }

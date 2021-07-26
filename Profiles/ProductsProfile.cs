@@ -13,6 +13,7 @@ namespace EstoqueWebAPI.Profiles
         public ProductsProfile()
         {
             CreateMap<Product, ProductReadDto>();
+            CreateMap<ProductCreateDto, Product>();
         }
     }
 }

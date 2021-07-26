@@ -14,9 +14,18 @@ namespace EstoqueWebAPI.Data
             _context = context;
         }
 
-        public void createProduct()
+        public bool SaveChanges()
         {
-            throw new NotImplementedException();
+            return (_context.SaveChanges() >= 0);
+        }
+
+        public void createProduct(Product product)
+        {
+            if(product == null)
+            {
+                throw new ArgumentNullException(nameof(product));
+            }
+            _context.Products.Add(product);
         }
 
         public void deleteProduct()

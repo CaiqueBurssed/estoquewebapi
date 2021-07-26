@@ -8,7 +8,12 @@ namespace EstoqueWebAPI.Data
 {
     public class MockEstoqueRepo : IEstoqueRepo
     {
-        public void createProduct()
+        public bool SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void createProduct(Product product)
         {
             throw new NotImplementedException();
         }
@@ -34,6 +39,7 @@ namespace EstoqueWebAPI.Data
         {
             return new Product { Id = 0, Name = "Playstation 4", Quantity = 100 };
         }
+
 
         public void updateProduct()
         {
