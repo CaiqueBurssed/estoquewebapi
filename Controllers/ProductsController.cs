@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using EstoqueWebAPI.Dtos;
 
 namespace EstoqueWebAPI.Controllers
 {
@@ -13,10 +15,12 @@ namespace EstoqueWebAPI.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IEstoqueRepo _repository;
+        private readonly IMapper _mapper;
 
-        public ProductsController(IEstoqueRepo repository)
+        public ProductsController(IEstoqueRepo repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         //GET api/products
@@ -30,11 +34,15 @@ namespace EstoqueWebAPI.Controllers
 
         //GET api/products/{id}
         [HttpGet("{id}")]
-        public ActionResult<Product> getProductById(int id)
+        public ActionResult<ProductReadDto> getProductById(int id)
         {
             var productItem = _repository.getProductById(id);
+            if(productItem != null)
+            {
+                return Ok(_mapper.Map<ProductReadDto>(productItem));
+            }
+            return NotFound();
 
-            return Ok(productItem);
         }
 
 

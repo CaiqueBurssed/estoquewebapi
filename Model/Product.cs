@@ -18,6 +18,5 @@ namespace EstoqueWebAPI.Model
         [Required]
         public int Quantity { get; set; }
 
-
     }
 }
