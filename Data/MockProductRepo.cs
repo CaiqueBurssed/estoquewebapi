@@ -30,7 +30,7 @@ namespace EstoqueWebAPI.Data
             return products;
         }
 
-        public Product getProductById()
+        public Product getProductById(int id)
         {
             return new Product { Id = 0, Name = "Playstation 4", Quantity = 100 };
         }
