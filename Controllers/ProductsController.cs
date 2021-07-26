@@ -12,8 +12,12 @@ namespace EstoqueWebAPI.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        private readonly MockProductRepo _repository = new MockProductRepo();
+        private readonly IProductRepo _repository;
 
+        public ProductsController(IProductRepo repository)
+        {
+            _repository = repository;
+        }
 
         //GET api/products
         [HttpGet]
@@ -32,6 +36,7 @@ namespace EstoqueWebAPI.Controllers
 
             return Ok(productItem);
         }
+
 
     }
 }
