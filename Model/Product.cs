@@ -18,5 +18,8 @@ namespace EstoqueWebAPI.Model
         [Required]
         public int Quantity { get; set; }
 
+        [Required]
+        [MaxLength(250)]
+        public string Manufacturer { get; set; }
     }
 }

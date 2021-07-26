@@ -25,11 +25,11 @@ namespace EstoqueWebAPI.Controllers
 
         //GET api/products
         [HttpGet]
-        public ActionResult<IEnumerable<Product>> getAllProducts()
+        public ActionResult<IEnumerable<ProductReadDto>> getAllProducts()
         {
             var productItems = _repository.getAllProducts();
 
-            return Ok(productItems);
+            return Ok(_mapper.Map<IEnumerable<ProductReadDto>>(productItems));
         }
 
         //GET api/products/{id}
