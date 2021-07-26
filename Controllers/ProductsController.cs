@@ -12,9 +12,9 @@ namespace EstoqueWebAPI.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        private readonly IProductRepo _repository;
+        private readonly IEstoqueRepo _repository;
 
-        public ProductsController(IProductRepo repository)
+        public ProductsController(IEstoqueRepo repository)
         {
             _repository = repository;
         }

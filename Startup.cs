@@ -28,7 +28,7 @@ namespace EstoqueWebAPI
         {
             services.AddControllers();
 
-            services.AddScoped<IProductRepo, MockProductRepo>();
+            services.AddScoped<IEstoqueRepo, MockEstoqueRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

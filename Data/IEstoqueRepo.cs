@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EstoqueWebAPI.Data
 {
-    public interface IProductRepo
+    public interface IEstoqueRepo
     {
         IEnumerable<Product> getAllProducts();
         Product getProductById(int id);

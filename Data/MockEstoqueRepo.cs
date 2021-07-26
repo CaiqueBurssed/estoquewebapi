@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EstoqueWebAPI.Data
 {
-    public class MockProductRepo : IProductRepo
+    public class MockEstoqueRepo : IEstoqueRepo
     {
         public void createProduct()
         {
