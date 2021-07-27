@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using static System.Net.WebRequestMethods;
 
 namespace EstoqueWebAPI
 {
@@ -35,6 +36,22 @@ namespace EstoqueWebAPI
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddScoped<IEstoqueRepo, SqlEstoqueRepo>();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+                {
+                    Version = "V1.1.0",
+                    Title = "Teste Prático Ploomes.",
+                    Description = "EstoqueWebAPI",
+
+                    Contact = new Microsoft.OpenApi.Models.OpenApiContact
+                    {
+                        Name = "Caique Burssed",
+                        Email = "caique.burssed@gmail.com",
+                    }
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,7 +61,7 @@ namespace EstoqueWebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -55,6 +72,14 @@ namespace EstoqueWebAPI
             {
                 endpoints.MapControllers();
             });
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "EstoqueWebAPI");
+            });
+
         }
     }
 }
