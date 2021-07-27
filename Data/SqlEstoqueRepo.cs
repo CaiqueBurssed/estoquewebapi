@@ -28,6 +28,11 @@ namespace EstoqueWebAPI.Data
             _context.Products.Add(product);
         }
 
+        public void updateProduct(Product product)
+        {
+            //Nothing
+        }
+
         public void deleteProduct()
         {
             throw new NotImplementedException();
@@ -43,9 +48,6 @@ namespace EstoqueWebAPI.Data
             return _context.Products.FirstOrDefault(p => p.Id == id);
         }
 
-        public void updateProduct()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

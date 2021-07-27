@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EstoqueWebAPI.Dtos
 {
-    public class ProductCreateDto
+    public class ProductUpdateDto
     {
         [Required]
         [MaxLength(250)]

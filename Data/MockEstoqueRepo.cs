@@ -40,8 +40,7 @@ namespace EstoqueWebAPI.Data
             return new Product { Id = 0, Name = "Playstation 4", Quantity = 100 };
         }
 
-
-        public void updateProduct()
+        public void updateProduct(Product product)
         {
             throw new NotImplementedException();
         }

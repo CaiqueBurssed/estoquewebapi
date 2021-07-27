@@ -10,12 +10,11 @@ namespace EstoqueWebAPI.Data
     {
         bool SaveChanges();
 
-
+        void createProduct(Product product);
+        void updateProduct(Product product);
+        void deleteProduct();
         IEnumerable<Product> getAllProducts();
         Product getProductById(int id);
-        void createProduct(Product product);
-        void updateProduct();
-        void deleteProduct();
 
     }
 }

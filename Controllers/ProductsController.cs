@@ -59,5 +59,22 @@ namespace EstoqueWebAPI.Controllers
 
         }
 
+        //PUT api/products/{id}
+        [HttpPut("{id}")]
+        public ActionResult updateProduct(int id, ProductUpdateDto productUpdateDto)
+        {
+            var productModelFromRepo = _repository.getProductById(id);
+
+            if(productModelFromRepo == null)
+            {
+                return NotFound();
+            }
+            _mapper.Map(productUpdateDto, productModelFromRepo);
+
+            _repository.updateProduct(productModelFromRepo);
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
     }
 }
