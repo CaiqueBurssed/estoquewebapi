@@ -18,7 +18,7 @@ namespace EstoqueWebAPI.Data
             throw new NotImplementedException();
         }
 
-        public void deleteProduct()
+        public void deleteProduct(Product product)
         {
             throw new NotImplementedException();
         }

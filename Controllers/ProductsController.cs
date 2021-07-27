@@ -76,5 +76,21 @@ namespace EstoqueWebAPI.Controllers
 
             return NoContent();
         }
+
+        //DELETE api/products/{id}
+        [HttpDelete("{id}")]
+        public ActionResult deleteProduct(int id)
+        {
+            var productModelFromRepo = _repository.getProductById(id);
+            if(productModelFromRepo  == null)
+            {
+                return NotFound();
+            }
+            _repository.deleteProduct(productModelFromRepo);
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
+
     }
 }

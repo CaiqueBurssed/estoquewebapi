@@ -12,7 +12,7 @@ namespace EstoqueWebAPI.Data
 
         void createProduct(Product product);
         void updateProduct(Product product);
-        void deleteProduct();
+        void deleteProduct(Product product);
         IEnumerable<Product> getAllProducts();
         Product getProductById(int id);
 

@@ -33,9 +33,13 @@ namespace EstoqueWebAPI.Data
             //Nothing
         }
 
-        public void deleteProduct()
+        public void deleteProduct(Product product)
         {
-            throw new NotImplementedException();
+            if (product == null)
+            {
+                throw new ArgumentNullException(nameof(product));
+            }
+            _context.Products.Remove(product);
         }
 
         public IEnumerable<Product> getAllProducts()
