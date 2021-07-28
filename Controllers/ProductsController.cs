@@ -61,7 +61,7 @@ namespace EstoqueWebAPI.Controllers
 
         //PUT api/products/{id}
         [HttpPut("{id}")]
-        public ActionResult updateProduct(int id, ProductUpdateDto productUpdateDto)
+        public ActionResult<ProductUpdateDto> updateProduct(int id, ProductUpdateDto productUpdateDto)
         {
             var productModelFromRepo = _repository.getProductById(id);
 
@@ -74,12 +74,12 @@ namespace EstoqueWebAPI.Controllers
             _repository.updateProduct(productModelFromRepo);
             _repository.SaveChanges();
 
-            return NoContent();
+            return CreatedAtRoute(nameof(getProductById), new { Id = productModelFromRepo.Id }, productModelFromRepo);
         }
 
         //DELETE api/products/{id}
         [HttpDelete("{id}")]
-        public ActionResult deleteProduct(int id)
+        public ActionResult<Product> deleteProduct(int id)
         {
             var productModelFromRepo = _repository.getProductById(id);
             if(productModelFromRepo  == null)
@@ -89,7 +89,8 @@ namespace EstoqueWebAPI.Controllers
             _repository.deleteProduct(productModelFromRepo);
             _repository.SaveChanges();
 
-            return NoContent();
+
+            return Ok(productModelFromRepo);
         }
 
     }
